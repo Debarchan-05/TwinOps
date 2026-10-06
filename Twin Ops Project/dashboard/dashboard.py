@@ -63,8 +63,10 @@ st.markdown("""
 def main():
     start_background_services()
 
+    # Ensure DB tables exist
     init_db()
-s
+
+    # Sidebar Navigation & Simulation Controls
     st.sidebar.image("https://img.icons8.com/color/96/water-pump.png", width=64)
     st.sidebar.title("TWIN OPS")
     st.sidebar.markdown("**Industrial Digital Twin Platform**")
@@ -72,7 +74,13 @@ s
 
     navigation = st.sidebar.radio(
         "Navigation",
-        ["📊 Live Overview", "🧩 Digital Twin View", "🚨 Alert Log", "📈 Analytics", "🔮 Predictive Maintenance"],
+        [
+            "📊 Live Overview",
+            "🧩 Digital Twin View",
+            "🚨 Alert Log",
+            "📈 Analytics",
+            "🔮 Predictive Maintenance"
+        ],
         index=0
     )
 
@@ -81,8 +89,16 @@ s
 
     # Refresh Rate Control
     st.sidebar.divider()
-    auto_refresh = st.sidebar.checkbox("🔄 Auto Refresh Dashboard", value=True)
-    refresh_rate = st.sidebar.slider("Refresh Interval (s)", 1, 10, 2)
+    auto_refresh = st.sidebar.checkbox(
+        "🔄 Auto Refresh Dashboard",
+        value=True
+    )
+    refresh_rate = st.sidebar.slider(
+        "Refresh Interval (s)",
+        1,
+        10,
+        2
+    )
 
     # Data Ingestion Query
     df = get_recent_sensor_data(limit=100)
