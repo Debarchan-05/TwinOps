@@ -60,16 +60,11 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-
- def main():
+def main():
     start_background_services()
 
-    # Ensure DB tables exist
     init_db()
-
-    # Sidebar Navigation & Simulation Controls
-
-    # Sidebar Navigation & Simulation Controls
+s
     st.sidebar.image("https://img.icons8.com/color/96/water-pump.png", width=64)
     st.sidebar.title("TWIN OPS")
     st.sidebar.markdown("**Industrial Digital Twin Platform**")
