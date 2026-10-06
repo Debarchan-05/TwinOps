@@ -8,6 +8,7 @@ import pandas as pd
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
 from app.config import DATABASE_PATH, MACHINE_ID
+from app.background_services import start_background_services
 from app.database import (
     init_db,
     get_recent_sensor_data,
@@ -60,9 +61,13 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 
-def main():
+ def main():
+    start_background_services()
+
     # Ensure DB tables exist
     init_db()
+
+    # Sidebar Navigation & Simulation Controls
 
     # Sidebar Navigation & Simulation Controls
     st.sidebar.image("https://img.icons8.com/color/96/water-pump.png", width=64)
